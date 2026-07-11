@@ -1,5 +1,5 @@
 import { useCallback, useState } from 'react';
-import { IconArrowLeft, IconMoodSad } from '@tabler/icons-react';
+import { IconArrowLeft, IconMoodSad, IconRefresh } from '@tabler/icons-react';
 import type { CategoryId, Level, Question } from './types';
 import { CATEGORY_TITLES, pickRandomUnused } from './data';
 import { useUsedQuestions } from './hooks/useUsedQuestions';
@@ -71,7 +71,14 @@ export default function App() {
             <>
               <QuestionCard question={screen.question} />
               <div className="question-actions">
-                <button className="btn btn--primary" onClick={goHome}>
+                <button
+                  className="btn btn--primary"
+                  onClick={() => showQuestion(screen.category, screen.level)}
+                >
+                  <IconRefresh size={20} stroke={2} aria-hidden />
+                  Заменить вопрос
+                </button>
+                <button className="btn btn--ghost" onClick={goHome}>
                   К категориям
                 </button>
               </div>
